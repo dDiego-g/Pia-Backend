@@ -16,7 +16,7 @@ import com.example.pia.services.ClienteService;
 
 
 @Controller
-@RequestMapping(path = {"/cliente","/", "/index",""})
+@RequestMapping(path = {"/cliente","/index"})
 public class ClienteController {
 
 	@Autowired 

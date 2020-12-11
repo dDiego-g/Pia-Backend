@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(path = "/app")
+@RequestMapping(path = {"/app","/"})
 public class IndexController {
 	
-	@RequestMapping(path = { "/", "","/index"} )
+	@RequestMapping(path = { "/", "","/index",""} )
 	public String index(Model model) {
 	
 		return "index";
