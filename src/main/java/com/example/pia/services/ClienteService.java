@@ -12,5 +12,6 @@ public interface ClienteService {
 	void delete(Long primary);
 	List<Cliente> findAll();
 	List<Cliente> buscarName(String nombre);
+	List<Cliente> findMayor();
 
 }

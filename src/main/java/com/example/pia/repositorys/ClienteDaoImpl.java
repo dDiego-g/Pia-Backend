@@ -65,6 +65,24 @@ public class ClienteDaoImpl implements ClienteDao{
 		return en.createQuery("from Cliente").getResultList();
 	}
 
+	@Override
+	@Transactional
+	public List<Cliente> findMayor() {
+		float mayor=0;
+		
+		for(Cliente cliente: findAll()) {
+			if(mayor < cliente.getMonto()) {
+				mayor=cliente.getMonto();	
+			}
+		}
+		
+		@SuppressWarnings("unchecked")
+		List<Cliente> resultado = en.createQuery("SELECT c FROM Cliente c WHERE c.monto=:monto")
+				.setParameter("monto", mayor)
+				.getResultList();
+		return resultado;
+	}
+
 	
 
 }

@@ -2,8 +2,11 @@ package com.example.pia.controllers.entitys;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -29,6 +32,10 @@ public class Prestamo {
 	private float monto;
 	
 	private boolean activo;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCliente")
+	private Cliente cliente;
 
 	public Long getId() {
 		return id;
@@ -76,6 +83,14 @@ public class Prestamo {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	

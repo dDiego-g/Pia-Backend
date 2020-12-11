@@ -46,6 +46,11 @@ public class ClienteServiceImpl implements ClienteService {
 		return result;
 	}
 
+	@Override
+	public List<Cliente> findMayor() {
+		return a.findMayor();
+	}
+
 	
 
 }

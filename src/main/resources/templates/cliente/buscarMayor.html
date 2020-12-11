@@ -40,26 +40,40 @@
 	<div class="container">
 		<h1 class="text-success" th:text="${titulo}">Hola mundo</h1>
 
-	
+		<form th:action="@{/cliente/buscarMayor}" method="post"
+			th:object="${cliente}">
 			
-		<dd>
-			<a th:href="@{/cliente/home}"><button type="button" class="btn btn-primary">Buscar Todos</button></a>
-		</dd>
-		
-		<dd>
-			<a th:href="@{/cliente/buscarID}"><button type="button" class="btn btn-primary">Buscar por ID</button></a>
-		</dd>
-		
-		<dd>
-			<a th:href="@{/cliente/buscarNombre}"><button type="button" class="btn btn-primary">Buscar por Nombre</button></a>
-		</dd>
-		
-		<dd>
-			<a th:href="@{/cliente/buscarMayor}"><button type="button" class="btn btn-primary">Buscar Mayor</button></a>
-		</dd>
+			<div class="container">
+		<h1 class="text-success" th:text="${titulo}"></h1>
 
+		<table class="table">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Telefono</th>
+					<th>Direccion</th>
+					<th>Monto</th>
+				</tr>
+			</thead>
+			<tbody>
+					<td th:text="${cliente.id}"></td>
+					<td th:text="${cliente.nombre}"></td>
+					<td th:text="${cliente.correo}"></td>
+					<td th:text="${cliente.telefono}"></td>
+					<td th:text="${cliente.direccion}"></td>
+					<td th:text="${cliente.monto}"></td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+			
+			<div class="resultados">
+	
+	</div>
 
-
+		</form>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -9,5 +9,6 @@ import com.example.pia.controllers.entitys.Cliente;
 public interface ClienteDao extends Crud<Cliente, Long>{
 
 	List<Cliente> findNombre(String nombre);
+	List<Cliente> findMayor();
 	
 }

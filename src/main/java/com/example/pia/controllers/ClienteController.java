@@ -83,7 +83,7 @@ public class ClienteController {
 			Model model) {
 		
 		if( nombre == null || nombre == "") {
-			model.addAttribute("error", "Nombre no valido, favor de varificarlo.");
+			model.addAttribute("error", "Nombre no valido");
 			model.addAttribute("listaCliente" , new Cliente());
 			return "cliente/buscarNombre";
 		}
@@ -92,6 +92,22 @@ public class ClienteController {
 		model.addAttribute("listaCliente" , as.buscarName(nombre));
 		
 		return "cliente/buscarNombre";
+	}
+	
+	@GetMapping(path= {"/buscarMayor"})
+	public String buscarMayor(Model model) {
+		model.addAttribute("cliente" , new Cliente());
+		return "cliente/buscarMayor";
+	}
+	
+	@PostMapping(path= {"/buscarMayor"})
+	public String buscarMayor(
+			float monto,
+			Model model) {
+
+		//Modificar Aqui
+		model.addAttribute("listaCliente" , as.findMayor());
+		return "cliente/buscarMayor";
 	}
 	
 	@PostMapping(path = {"/guardar"})

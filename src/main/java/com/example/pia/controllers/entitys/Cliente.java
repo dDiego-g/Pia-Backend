@@ -1,5 +1,7 @@
 package com.example.pia.controllers.entitys;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -41,6 +44,12 @@ public class Cliente {
 	
 	//@MontoMinimo
 	private float monto;
+	
+	@OneToMany(
+			mappedBy = "cliente", cascade = {
+	        CascadeType.ALL
+	        })
+	private List<Prestamo> prestamo;
 
 	public Long getId() {
 		return id;
@@ -89,5 +98,15 @@ public class Cliente {
 	public void setMonto(float monto) {
 		this.monto = monto;
 	}
+
+	public List<Prestamo> getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(List<Prestamo> prestamo) {
+		this.prestamo = prestamo;
+	}
+	
+	
 
 }
