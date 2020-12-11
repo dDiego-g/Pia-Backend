@@ -32,7 +32,7 @@ public class ClienteDaoImpl implements ClienteDao{
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findNombre(String nombre){
-		List<Cliente> result = en.createQuery("Select c From clientes c Where c.nombre=:nombreC", Cliente.class).setParameter("nombreC", nombre).getResultList();
+		List<Cliente> result = en.createQuery("Select c From Cliente c Where c.nombre=:nombreC").setParameter("nombreC", nombre).getResultList();
 		return result;
 	}
 
