@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.pia.controllers.entitys.Cliente;
 import com.example.pia.services.ClienteService;
 
+
 @Controller
 @RequestMapping(path = {"/cliente","/", "/index",""})
 public class ClienteController {
@@ -21,7 +22,7 @@ public class ClienteController {
 	@Autowired 
 	private ClienteService as;
 	
-	@GetMapping(path = {"", "/"})
+	@GetMapping(path = {"", "/","/home"})
 	public String home(Model model) {
 		model.addAttribute("titulo", "Home Cliente");
 		model.addAttribute("clientes", as.findAll());
@@ -35,11 +36,62 @@ public class ClienteController {
 		return "cliente/alta";
 	}
 	
+	@GetMapping(path = {"/buscar"})
+	public String buscar(Model model) {
+		model.addAttribute("titulo", "Busqueda Cliente");
+		model.addAttribute("clientes", as.findAll());
+		return "cliente/buscar";
+	}
+	
 	@GetMapping(path = { "/editar/{id}"})
 	public String editar(@PathVariable Long id,Model model) {
 		model.addAttribute("titulo", "Editar Cliente");
 		model.addAttribute("cliente", as.find(id));
 		return "cliente/editar";
+	}
+	
+	@GetMapping(path= {"/buscarID"})
+	public String buscarID(Model model) {
+		model.addAttribute("cliente" , new Cliente());
+		return "cliente/buscarID";
+	}
+	
+	@PostMapping(path= {"/buscarID"})
+	public String buscarID(
+			Long id,
+			Model model) {
+		if( id == null ||id < 0) {
+			model.addAttribute("error", "ID no es valido, favor de varificarlo.");
+			model.addAttribute("cliente" , new Cliente());
+			return "cliente/buscar_ID";
+		}
+		//Metodo buscar(id)????
+		model.addAttribute("cliente" , as.find(id));
+		
+		return "cliente/buscarID";
+	}
+	
+	@GetMapping(path= {"/buscarNombre"})
+	public String buscarNombre(Model model) {
+		model.addAttribute("cliente" , new Cliente());
+		return "cliente/buscarNombre";
+	}
+	
+	@PostMapping(path= {"/buscarNombre"})
+	public String buscarNombre(
+			String nombre,
+			Model model) {
+		
+		if( nombre == null || nombre == "") {
+			model.addAttribute("error", "Nombre no valido, favor de varificarlo.");
+			model.addAttribute("listaCliente" , new Cliente());
+			return "cliente/buscarNombre";
+		}
+		
+		//Modificar Aqui
+		model.addAttribute("listaCliente" , as.buscarName(nombre));
+		
+		return "cliente/buscarNombre";
 	}
 	
 	@PostMapping(path = {"/guardar"})

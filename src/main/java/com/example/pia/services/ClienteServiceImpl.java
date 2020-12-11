@@ -40,6 +40,12 @@ public class ClienteServiceImpl implements ClienteService {
 		return a.findAll();
 	}
 
+	@Override
+	public List<Cliente> buscarName(String nombre) {
+		List<Cliente> result = a.findNombre(nombre);
+		return result;
+	}
+
 	
 
 }

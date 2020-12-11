@@ -15,8 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.pia.controllers.entitys.Cliente;
 
+
 @Repository
-public class ClienteDaoImpl implements ClienteDao {
+public class ClienteDaoImpl implements ClienteDao{
 
 	@Autowired
 	private EntityManager en;
@@ -25,6 +26,14 @@ public class ClienteDaoImpl implements ClienteDao {
 	@Transactional(readOnly = true)
 	public Cliente find(Long primary) {
 		return en.find(Cliente.class, primary);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly = true)
+	public List<Cliente> findNombre(String nombre){
+		List<Cliente> result = en.createQuery("Select c From clientes c Where c.nombre=:nombreC", Cliente.class).setParameter("nombreC", nombre).getResultList();
+		return result;
 	}
 
 	@Override

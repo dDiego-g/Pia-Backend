@@ -11,5 +11,6 @@ public interface ClienteService {
 	void update(Cliente entity);
 	void delete(Long primary);
 	List<Cliente> findAll();
+	List<Cliente> buscarName(String nombre);
 
 }
