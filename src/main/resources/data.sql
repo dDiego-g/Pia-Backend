@@ -1,0 +1,1 @@
+insert into cliente (id, nombre, correo, telefono, direccion, monto) values (1 , 'Diego', 'diego@mail.com', 83573700, 'monterrrey', 100.00);
