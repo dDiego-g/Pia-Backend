@@ -17,7 +17,7 @@ import com.example.pia.controllers.entitys.Prestamo;
 import com.example.pia.services.PrestamoService;
 
 @Controller
-@RequestMapping(path = {"/prestamo","/", "/index",""})
+@RequestMapping(path = {"/prestamo"})
 public class PrestamoController {
 
 	@Autowired 

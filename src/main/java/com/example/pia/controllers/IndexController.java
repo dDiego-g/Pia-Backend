@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(path = "/app")
 public class IndexController {
 
-	@RequestMapping(path = { "/index", "/" }, method = RequestMethod.GET)
+	@RequestMapping(path = { "/index", }, method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("titulo", "Home Banco");
 		return "index";
