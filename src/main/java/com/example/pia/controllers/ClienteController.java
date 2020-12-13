@@ -84,12 +84,13 @@ public class ClienteController {
 		
 		if( nombre == null || nombre == "") {
 			model.addAttribute("error", "Nombre no valido");
-			model.addAttribute("listaCliente" , new Cliente());
+			model.addAttribute("cliente" , new Cliente());
 			return "cliente/buscarNombre";
 		}
 		
 		//Modificar Aqui
-		model.addAttribute("listaCliente" , as.buscarName(nombre));
+		model.addAttribute("titulo", "Clientes por nombre");
+		model.addAttribute("clientes" , as.buscarName(nombre));
 		
 		return "cliente/buscarNombre";
 	}

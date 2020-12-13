@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -28,12 +29,13 @@ public class ClienteDaoImpl implements ClienteDao{
 		return en.find(Cliente.class, primary);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findNombre(String nombre){
-		List<Cliente> result = en.createQuery("Select c From Cliente c Where c.nombre=:nombreC").setParameter("nombreC", nombre).getResultList();
-		return result;
+		return en.createQuery("SELECT c FROM Cliente c WHERE c.nombre=:nombre order by nombre asc")
+				.setParameter("nombre", nombre)
+				.getResultList();
+		//return  resultado;
 	}
 
 	@Override
@@ -81,6 +83,15 @@ public class ClienteDaoImpl implements ClienteDao{
 				.setParameter("monto", mayor)
 				.getResultList();
 		return resultado;
+	}
+
+	@Override
+	public List<Cliente> findMonto() {
+		List <Cliente> clientes=null;
+		for(Cliente e: clientes) {
+			
+		}
+		return null;
 	}
 
 	

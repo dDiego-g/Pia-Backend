@@ -13,5 +13,6 @@ public interface ClienteService {
 	List<Cliente> findAll();
 	List<Cliente> buscarName(String nombre);
 	List<Cliente> findMayor();
+	List<Cliente> findMonto();
 
 }

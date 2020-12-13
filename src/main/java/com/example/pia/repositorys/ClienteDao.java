@@ -10,5 +10,6 @@ public interface ClienteDao extends Crud<Cliente, Long>{
 
 	List<Cliente> findNombre(String nombre);
 	List<Cliente> findMayor();
+	List<Cliente> findMonto();
 	
 }

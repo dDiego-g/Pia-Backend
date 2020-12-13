@@ -19,9 +19,8 @@ import com.example.pia.validations.MontoMinimo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
-
-@Entity
-@Table(name="clientes")
+//antes clientes
+@javax.persistence.Entity(name = "Cliente")
 public class Cliente {
 
 	@Id

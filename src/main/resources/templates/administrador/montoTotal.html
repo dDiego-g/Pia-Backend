@@ -38,44 +38,20 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h1 class="text-success" th:text="${titulo}">Hola mundo</h1>
-
-		<form th:action="@{/administrador/buscarMayor}" method="post"
-			th:object="${cliente}">
-			
-			<div class="container">
 		<h1 class="text-success" th:text="${titulo}"></h1>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th>id</th>
-					<th>Nombre</th>
-					<th>Correo</th>
-					<th>Telefono</th>
-					<th>Direccion</th>
-					<th>Monto</th>
+					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="cliente: ${clientes}">
-					<td th:text="${cliente.id}"></td>
-					<td th:text="${cliente.nombre}"></td>
-					<td th:text="${cliente.correo}"></td>
-					<td th:text="${cliente.telefono}"></td>
-					<td th:text="${cliente.direccion}"></td>
-					<td th:text="${cliente.monto}"></td>
-					</tr>
+					<td th:text="${cliente.total}"></td>
 			</tbody>
 		</table>
 	</div>
-			
-			<div class="resultados">
-	
-	</div>
 
-		</form>
-	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
@@ -88,6 +64,4 @@
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
 </body>
-
-
 </html>

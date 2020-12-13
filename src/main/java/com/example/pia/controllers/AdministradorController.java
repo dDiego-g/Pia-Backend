@@ -84,30 +84,48 @@ public class AdministradorController {
 		
 		if( nombre == null || nombre == "") {
 			model.addAttribute("error", "Nombre no valido");
-			model.addAttribute("listaCliente" , new Cliente());
+			model.addAttribute("cliente" , new Cliente());
 			return "administrador/buscarNombre";
 		}
 		
 		//Modificar Aqui
-		model.addAttribute("listaCliente" , as.buscarName(nombre));
+		model.addAttribute("titulo", "Clientes por nombre");
+		model.addAttribute("clientes" , as.buscarName(nombre));
 		
 		return "administrador/buscarNombre";
 	}
 	
 	@GetMapping(path= {"/buscarMayor"})
 	public String buscarMayor(Model model) {
-		model.addAttribute("cliente" , new Cliente());
+		model.addAttribute("titulo","Cliente con mas dinero");
+		model.addAttribute("clientes" , as.findMayor());
 		return "administrador/buscarMayor";
 	}
 	
-	@PostMapping(path= {"/buscarMayor"})
+	/*@PostMapping(path= {"/buscarMayor"})
 	public String buscarMayor(
+			Model model) {
+
+		//Modificar Aqui
+		model.addAttribute("titulo","Cliente con mas dinero");
+		model.addAttribute("clientes" , as.findMayor());
+		return "administrador/buscarMayor";
+	}*/
+	
+	@GetMapping(path= {"/montoTotal"})
+	public String montoTotal(Model model) {
+		model.addAttribute("cliente" , new Cliente());
+		return "administrador/montoTotal";
+	}
+	
+	@PostMapping(path= {"/montoTotal"})
+	public String montoTotal(
 			float monto,
 			Model model) {
 
 		//Modificar Aqui
 		model.addAttribute("listaCliente" , as.findMayor());
-		return "administrador/buscarMayor";
+		return "administrador/montoTotal";
 	}
 	
 	@PostMapping(path = {"/guardar"})
