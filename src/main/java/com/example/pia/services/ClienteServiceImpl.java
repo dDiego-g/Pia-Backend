@@ -58,6 +58,23 @@ public class ClienteServiceImpl implements ClienteService {
 		return a.findMonto();
 	}
 
+	@Override
+	public Cliente findTotal() {
+		return a.findTotal();
+	}
+
+	@Override
+	public Cliente retirar(Long id, float monto) {
+		return a.retirar(id, monto);
+		
+	}
+	
+	@Override
+	public Cliente abonar(Long id, float monto) {
+		return a.abonar(id, monto);
+		
+	}
+
 	
 
 }

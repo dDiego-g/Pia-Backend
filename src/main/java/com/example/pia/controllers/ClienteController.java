@@ -111,6 +111,38 @@ public class ClienteController {
 		return "cliente/buscarMayor";
 	}
 	
+	@GetMapping(path= {"/retirar"})
+	public String retirar(Model model) {
+		model.addAttribute("clientes" , new Cliente());
+		return "cliente/retirar";
+	}
+	
+	@PostMapping(path= {"/retirar"})
+	public String retirar(Long id,
+			float monto,
+			Model model) {
+
+		//Modificar Aqui
+		as.retirar(id, monto);
+		return "cliente/retirar";
+	}
+	
+	@GetMapping(path= {"/abonar"})
+	public String abonar(Model model) {
+		model.addAttribute("clientes" , new Cliente());
+		return "cliente/abonar";
+	}
+	
+	@PostMapping(path= {"/abonar"})
+	public String abonar(Long id,
+			float monto,
+			Model model) {
+
+		//Modificar Aqui
+		as.abonar(id, monto);
+		return "cliente/abonar";
+	}
+	
 	@PostMapping(path = {"/guardar"})
 	private String guardar(@Valid Cliente cliente, BindingResult result, Model model) {
 		

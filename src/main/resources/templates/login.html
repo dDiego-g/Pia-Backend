@@ -45,7 +45,7 @@
 	<h1 th:text="${titulo}"></h1>
 	</div>
 	<div style="width: 30%; margin-left: 35%;">
-		<form th:action="@{/cliente}" method="post">
+		<form th:action="@{/administrador}">
 		<div>
 			<div>
 				<label for="user">Usuario</label><br>
@@ -63,14 +63,14 @@
 			</div>
 			<br>
 			<input style="float: left; margin-right: 10px; width: 100px; margin-left: 25%;" type="submit" value="Aceptar">
-			<a style="float: left; width: 100px;" th:href="@{http://localhost:8080/cliente}"><input type="button" value="Regresar"></a>
+			<a style="float: left; width: 100px;" th:href="@{http://localhost:8080/}"><input type="button" value="Regresar"></a>
 		</div>
 		</form>
 		<br>
 		<div style="margin-top: 30px; color: grey;">
-		<label> Usuario: user</label>
+		<label> Usuario: admin</label>
 		<br>
-		<label> Contraseña: pass</label>
+		<label> Password: pass</label>
 		</div>
 	</div>
 

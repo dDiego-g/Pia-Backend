@@ -27,8 +27,8 @@ public class PrestamoDAOImpl implements PrestamoDAO {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Prestamo> findFecha(Date fecha){
-		List<Prestamo> result = en.createQuery("from Prestamo p where p.fechaExpiracion = :activoP ").setParameter("activoP", fecha).getResultList();
-		return result;
+		return en.createQuery("from Prestamo p where p.fechaExpiracion = :activoP ").setParameter("activoP", fecha).getResultList();
+		//return result;
 	}
 	
 	@SuppressWarnings("unchecked")

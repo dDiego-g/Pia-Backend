@@ -21,7 +21,7 @@ public class IndexController {
 	@RequestMapping(path = { "/login"} )
 	public String login(Model model) {
 		model.addAttribute("titulo","Login");
-		return "cliente/index";
+		return "login";
 	}
 	
 

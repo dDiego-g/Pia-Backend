@@ -114,7 +114,8 @@ public class AdministradorController {
 	
 	@GetMapping(path= {"/montoTotal"})
 	public String montoTotal(Model model) {
-		model.addAttribute("cliente" , new Cliente());
+		model.addAttribute("titulo","Monto total en banco");
+		model.addAttribute("cliente" , as.findTotal());
 		return "administrador/montoTotal";
 	}
 	

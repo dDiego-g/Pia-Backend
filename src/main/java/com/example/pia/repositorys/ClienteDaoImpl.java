@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,12 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.pia.controllers.entitys.Cliente;
+import com.example.pia.services.ClienteService;
 
 
 @Repository
@@ -22,6 +25,8 @@ public class ClienteDaoImpl implements ClienteDao{
 
 	@Autowired
 	private EntityManager en;
+	private ClienteService sc;
+	Cliente c = new Cliente();
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -92,6 +97,38 @@ public class ClienteDaoImpl implements ClienteDao{
 			
 		}
 		return null;
+	}
+
+	@Override
+	public Cliente findTotal() {
+		float total=0;
+		for (Cliente cliente : findAll()) {
+			total = total + cliente.getMonto();
+		}
+		c.setMonto(total);
+		return c;
+	}
+
+	@Override
+	@Transactional
+	@Modifying
+	public Cliente retirar(Long id, float monto) {
+		Query query = en.createQuery("UPDATE Cliente c set c.monto = c.monto - :montos WHERE c.id=:ids")
+			.setParameter("montos", monto).setParameter("ids", id);
+		query.executeUpdate();
+		
+		return find(id);
+	}
+	
+	@Override
+	@Transactional
+	@Modifying
+	public Cliente abonar(Long id, float monto) {
+		Query query = en.createQuery("UPDATE Cliente c set c.monto = c.monto + :montos WHERE c.id=:ids")
+			.setParameter("montos", monto).setParameter("ids", id);
+		query.executeUpdate();
+		
+		return find(id);
 	}
 
 	

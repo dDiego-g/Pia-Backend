@@ -13,8 +13,7 @@ import javax.validation.constraints.NotNull;
 
 
 
-@Entity
-@Table(name="prestamos")
+@javax.persistence.Entity(name = "Prestamo")
 public class Prestamo {
 
 	@Id

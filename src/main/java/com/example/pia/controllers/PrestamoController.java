@@ -122,11 +122,10 @@ public class PrestamoController {
 	public String buscarFecha(
 			Date fechaExpiracion,
 			Model model) {
-		
-		
-		
+
 		//Modificar Aqui
-		model.addAttribute("listaPrestamo" , as.buscarFecha(fechaExpiracion));
+		model.addAttribute("titulo", "Prestamos por fecha expiracion");
+		model.addAttribute("prestamos" , as.buscarFecha(fechaExpiracion));
 		
 		return "prestamo/buscarFecha";
 	}
@@ -143,7 +142,8 @@ public class PrestamoController {
 			Model model) {
 		
 		//Modificar Aqui
-		model.addAttribute("listaPrestamo" , as.buscarActivo(activo));
+		model.addAttribute("titulo", "Prestamos Activos");
+		model.addAttribute("prestamos" , as.buscarActivo(activo));
 		
 		return "prestamo/buscarActivo";
 	}

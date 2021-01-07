@@ -11,5 +11,7 @@ public interface ClienteDao extends Crud<Cliente, Long>{
 	List<Cliente> findNombre(String nombre);
 	List<Cliente> findMayor();
 	List<Cliente> findMonto();
-	
+	Cliente findTotal();
+	Cliente retirar(Long id, float monto);
+	Cliente abonar(Long id, float monto);
 }

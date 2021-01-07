@@ -43,8 +43,7 @@ public class PrestamoServiceImpl implements PrestamoService {
 
 	@Override
 	public List<Prestamo> buscarFecha(Date fecha) {
-		List<Prestamo> result = a.findFecha(fecha);
-		return result;
+		return a.findFecha(fecha);
 	}
 	
 	@Override
